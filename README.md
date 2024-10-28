@@ -173,43 +173,51 @@ If you have not run EVE-O Preview before, or since this feature was added then i
 
 **Note**: Don't forget to make a backup copy of the file before editing it.
 
-Open the file using any text editor. find the entries **CycleGroup1ForwardHotkeys** and **CycleGroup1BackwardHotkeys**. Most probably it will look like
+Open the configuration file using any text editor, then locate the **CycleGroups** section. Most probably it will look like:
 
-    "CycleGroup1ForwardHotkeys": [
-      "F14",
-      "Control+F14"
-    ],
-    "CycleGroup1BackwardHotkeys": [
-      "F13",
-      "Control+F13"
-    ]
+    "CycleGroups": {
+      "1": {
+        "ForwardHotkeys": [
+          "F14",
+          "Control+F14"
+        ],
+        "BackwardHotkeys": [
+          "F13",
+          "Control+F13"
+        ],
+        "ClientsOrder": {
+          "EVE - Example DPS Toon 1": 1,
+          "EVE - Example DPS Toon 2": 2,
+          "EVE - Example DPS Toon 3": 3
+        }
+      },
+      "2": {
+        "ForwardHotkeys": [
+          "F16",
+          "Control+F16"
+        ],
+        "BackwardHotkeys": [
+          "F15",
+          "Control+F15"
+        ],
+        "ClientsOrder": {
+          "EVE - Example Logi Toon 1": 1,
+          "EVE - Example Scout Toon 2": 2,
+          "EVE - Example Tackle Toon 3": 3
+        }
+      }
+    }
 
 **Note**: It is highly recommended to leave the Hotkey values as default and bind them with a gaming device if you can support it.
 
-Next find the entry **CycleGroup1ForwardHotkeys**. Most probably it will look like
+The above configuration specifies two cycle groups:
+- **CycleGroup 1** and **CycleGroup 2** are each configured with their own forward and backward hotkeys, allowing you to set up cycling for different groups of characters, such as DPS and support roles.
+- Modify the **ClientsOrder** entries under each group to replace "Example DPS Toon 1", etc., with the name of each of your characters. The numbers on the right determine the order in which they will cycle.
+- If a character appears in the list but is not currently logged in, they will simply be skipped. If a character does not appear in the list, they will not become active when cycling clients.
 
-    "CycleGroup1ClientsOrder": {
-      "EVE - Example DPS Toon 1": 1,
-      "EVE - Example DPS Toon 2": 2,
-      "EVE - Example DPS Toon 3": 3
-    }
+If you prefer not to use any of these hotkeys, set the values to empty, as shown below:
 
-You should modify this entry with a list of each of your clients replacing "Example DPS Toon 1", etc with the name of your character. The numbers on the right are used to force the order in which they cycle.
-If a character appears in the list but is not currently logged in, then it will simply be skipped.
-If a character does not appear in the list, then they will never become active when cycling clients.
-
-By now you may have noticed that there are two groups. The above configuration can be followed for a second group by using the values **CycleGroup2ForwardHotkeys**, **CycleGroup2BackwardHotkeys**, and **CycleGroup2ForwardHotkeys**
-This may provide useful if you want to have one HotKey to cycle through a group of DPS characters, while another HotKey cycles through support roles such as gate scouts, or a group of logi.
-
-Alternatively you may not want to use any of these HotKeys. Please note that deleting the values in their entirety will simply result in them being automatically re-generated.
-Should you wish to remove these HotKeys completely, Simply set the values to empty, such as the example below:
-
-      "CycleGroup1ForwardHotkeys": [],
-	  "CycleGroup1BackwardHotkeys": [],
-	  "CycleGroup1ClientsOrder": {},
-	  "CycleGroup2ForwardHotkeys": [],
-	  "CycleGroup2BackwardHotkeys": [],
-	  "CycleGroup2ClientsOrder": {}
+    "CycleGroups": {}
 
 **Hints** 
 * Minimise the use of modifiers or standard keys to minimise issues with the client playing up. In the default example unusual Function keys (e.g. F14) are used which are then bound to a game pad or gaming mouse.
