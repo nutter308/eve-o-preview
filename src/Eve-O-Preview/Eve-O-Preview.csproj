@@ -125,6 +125,7 @@
     <Compile Include="ApplicationBase\PresenterGeneric.cs" />
     <Compile Include="Configuration\Implementation\AppConfig.cs" />
     <Compile Include="Configuration\Implementation\ConfigurationStorage.cs" />
+    <Compile Include="Configuration\Interface\CycleGroup.cs" />
     <Compile Include="Configuration\Interface\IAppConfig.cs" />
     <Compile Include="Configuration\Interface\IThumbnailConfiguration.cs" />
     <Compile Include="Configuration\Interface\ZoomAnchor.cs" />

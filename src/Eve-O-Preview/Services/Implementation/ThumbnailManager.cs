@@ -76,12 +76,12 @@ namespace EveOPreview.Services
 
 			this._hideThumbnailsDelay = this._configuration.HideThumbnailsDelay;
 
-			RegisterCycleClientHotkey(this._configuration.CycleGroup1ForwardHotkeys?.Select(x => this._configuration.StringToKey(x)), true, this._configuration.CycleGroup1ClientsOrder);
-			RegisterCycleClientHotkey(this._configuration.CycleGroup1BackwardHotkeys?.Select(x => this._configuration.StringToKey(x)), false, this._configuration.CycleGroup1ClientsOrder);
-
-			RegisterCycleClientHotkey(this._configuration.CycleGroup2ForwardHotkeys?.Select(x => this._configuration.StringToKey(x)), true, this._configuration.CycleGroup2ClientsOrder);
-			RegisterCycleClientHotkey(this._configuration.CycleGroup2BackwardHotkeys?.Select(x => this._configuration.StringToKey(x)), false, this._configuration.CycleGroup2ClientsOrder);
+            foreach (Configuration.Implementation.CycleGroup cycleGroup in this._configuration.CycleGroups.Values)
+            {
+                RegisterCycleClientHotkey(cycleGroup.ForwardHotkeys?.Select(x => this._configuration.StringToKey(x)), true, cycleGroup.ClientsOrder);
+                RegisterCycleClientHotkey(cycleGroup.BackwardHotkeys?.Select(x => this._configuration.StringToKey(x)), false, cycleGroup.ClientsOrder);
 		}
+        }
 
 		public IThumbnailView GetClientByTitle(string title)
 		{
